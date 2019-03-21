@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ApolloClient from 'apollo-boost';
 import { ApolloProvider } from 'react-apollo';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 import Launches from './components/Launches';
 import './App.css';
 import logo from './logo.png';
@@ -13,10 +14,16 @@ class App extends Component {
   render() {
     return (
       <ApolloProvider client={client}>
-        <div className="container">
-          <h1 className="display-3 text-center">SpaceX</h1>
-          <Launches />
-        </div>
+        <Router>
+          <div className="container">
+            <img
+              src={logo}
+              alt="SpaceX"
+              style={{ width: 300, display: 'block', margin: 'auto' }}
+            />
+            <Route exact path="/" component={Launches} />
+          </div>
+        </Router>
       </ApolloProvider>
     );
   }
